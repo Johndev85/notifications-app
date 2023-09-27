@@ -1,0 +1,43 @@
+.navbar {
+  height: auto;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightseagreen;
+  color: #fff;
+  .logo {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    .icon {
+      position: relative;
+      margin-left: 10px;
+      cursor: pointer;
+      & svg {
+        font-size: 25px;
+        & path {
+          fill: #fff;
+        }
+      }
+
+      .counter {
+        position: absolute;
+        top: -15px;
+        right: -8px;
+        padding: 5px;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: red;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
