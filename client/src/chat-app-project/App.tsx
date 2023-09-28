@@ -1,10 +1,11 @@
 //styles
 import styles from "./app.module.css"
-import { StrictMode } from "react"
 
 //libraries
+import { StrictMode, useEffect } from "react"
 import { useState } from "react"
 import { postData } from "../data"
+import { io, Socket } from "socket.io-client"
 
 //components
 import NavBar from "../components/NavBar/NavBar"
@@ -13,6 +14,15 @@ import Card from "../components/Card/Card"
 const App: React.FC = () => {
   const [username, setUsername] = useState<string>("")
   const [user, setUser] = useState<string>("")
+  const [socket, setSocket] = useState<Socket | null>(null)
+
+  useEffect(() => {
+    setSocket(io("http://localhost:3000"))
+  }, [])
+
+  useEffect(() => {
+    socket?.emit("newUser", user)
+  }, [socket, user])
 
   const handleLogin = () => {
     setUser(username)
@@ -25,9 +35,9 @@ const App: React.FC = () => {
       <main className={styles.container}>
         {user ? (
           <>
-            <NavBar />
+            <NavBar socket={socket} />
             {postData.map((post) => (
-              <Card key={post.id} post={post} />
+              <Card key={post.id} post={post} socket={socket} user={user} />
             ))}
             <span className={styles.username}>{user}</span>
           </>
