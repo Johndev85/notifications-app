@@ -41,6 +41,8 @@
 ## 🖥 Technologies
 
 - Astro build - Framework web
+- React
+- TypeScript
 - HTML
 - CSS
 - JavaScript
