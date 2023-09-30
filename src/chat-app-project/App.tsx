@@ -17,7 +17,7 @@ const App: React.FC = () => {
   const [socket, setSocket] = useState<Socket | null>(null)
 
   useEffect(() => {
-    setSocket(io("http://localhost:3000"))
+    setSocket(io("https://notification-socket.onrender.com/"))
   }, [])
 
   useEffect(() => {
